@@ -47,6 +47,12 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation ('com.aliyun.ams:alicloud-android-push:3.2.3') {
+        exclude (module:'alicloud-android-utdid')
+        exclude (module:'alicloud-android-ut')
+        exclude (module:'utdid4all')
+    }
+    /*
     implementation 'com.aliyun.ams:alicloud-android-push:3.2.3@aar'
     implementation 'com.aliyun.ams:alicloud-android-utdid:2.5.1-proguard'
     implementation 'com.aliyun.ams:alicloud-android-utils:1.1.6.4'
@@ -58,6 +64,8 @@ dependencies {
         exclude (module:'utdid4all')
     }
     implementation 'com.taobao.android:tnet4android:3.1.14.7-all'
+    */
+    
     //厂商辅助通道
     implementation 'com.aliyun.ams:alicloud-android-third-push:3.2.3'
     implementation 'com.aliyun.ams:alicloud-android-third-push-huawei:3.2.3'//华为依赖
