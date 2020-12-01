@@ -35,6 +35,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
             val pushService = PushServiceFactory.getCloudPushService()
             pushService.register(application.applicationContext, object : CommonCallback {
                 override fun onSuccess(response: String?) {
+                    Log.e(TAG, "pushService, register onSuccess, $response")
                     inHandler.postDelayed({
                         RammusPushHandler.methodChannel?.invokeMethod("initCloudChannelResult", mapOf(
                                 "isSuccessful" to true,
@@ -44,6 +45,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
                 }
 
                 override fun onFailed(errorCode: String?, errorMessage: String?) {
+                    Log.e(TAG, "pushService, register onFailed, $errorCode, $errorMessage")
                     inHandler.postDelayed({
                         RammusPushHandler.methodChannel?.invokeMethod("initCloudChannelResult", mapOf(
                                 "isSuccessful" to false,
