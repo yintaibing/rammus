@@ -48,15 +48,17 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation ('com.aliyun.ams:alicloud-android-push:3.2.3') {
-        exclude (module:'alicloud-android-utdid')
-        exclude (module:'alicloud-android-ut')
+        //utdid和ut可能与阿里百川的依赖冲突，需要在其中一边做排除
+        //exclude (module:'alicloud-android-utdid')
+        //exclude (module:'alicloud-android-ut')
         exclude (module:'utdid4all')
     }
+    //或如下
     /*
     implementation 'com.aliyun.ams:alicloud-android-push:3.2.3@aar'
-    implementation 'com.aliyun.ams:alicloud-android-utdid:2.5.1-proguard'
+    implementation 'com.aliyun.ams:alicloud-android-utdid:2.5.1-proguard'//可能与阿里百川的依赖冲突，需要在其中一边做排除
     implementation 'com.aliyun.ams:alicloud-android-utils:1.1.6.4'
-    implementation 'com.aliyun.ams:alicloud-android-ut:5.4.4'
+    implementation 'com.aliyun.ams:alicloud-android-ut:5.4.4'//可能与阿里百川的依赖冲突，需要在其中一边做排除
     implementation 'com.aliyun.ams:alicloud-android-beacon:1.0.4.3'
     implementation 'com.aliyun.ams:alicloud-android-agoo:4.0.1-emas'
     implementation 'com.taobao.android:accs_sdk_taobao:4.0.1-emas'
