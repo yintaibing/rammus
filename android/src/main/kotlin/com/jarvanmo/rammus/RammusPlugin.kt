@@ -23,6 +23,11 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
     companion object {
         private const val TAG = "RammusPlugin"
         private val inHandler = Handler()
+
+        // 点击后启动APP的那一条消息
+        @JvmStatic
+        var launchAppNotification: Map<String, Object>? = null
+
         @JvmStatic
         fun registerWith(registrar: Registrar) {
             val channel = MethodChannel(registrar.messenger(), "com.jarvanmo/rammus")
@@ -104,6 +109,10 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
     override fun onMethodCall(call: MethodCall, result: Result) {
         when (call.method) {
             "deviceId" -> result.success(PushServiceFactory.getCloudPushService().deviceId)
+            "getLaunchAppNotification" -> {
+                result.success(launchAppNotification)
+                launchAppNotification = null// 调用后清空
+            }
             "turnOnPushChannel" -> turnOnPushChannel(result)
             "turnOffPushChannel" -> turnOffPushChannel(result)
             "checkPushChannelStatus" -> checkPushChannelStatus(result)

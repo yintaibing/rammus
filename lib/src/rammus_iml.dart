@@ -94,6 +94,18 @@ Future<CommonCallbackResult> get pushChannelStatus async {
 //      "initCloudChannel", {"appKey": appKey, "appSecret": appSecret});
 //}
 
+Future<OnNotification> getLaunchAppNotification() async {
+  var result = await _channel.invokeMethod("getLaunchAppNotification");
+  if (result != null && result is Map && result.isNotEmpty) {
+    return OnNotification(
+      result['title'],
+      result['summary'],
+      result['extras'],
+    );
+  }
+  return null;
+}
+
 Future<CommonCallbackResult> turnOnPushChannel() async {
   var result = await _channel.invokeMethod("turnOnPushChannel");
 
