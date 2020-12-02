@@ -34,7 +34,7 @@ open class PopupPushActivity: AndroidPopupActivity() {
      */
     protected open fun needFinish(): Boolean = true
 
-    protected fun buildNotificationMap(title: String, summary: String, extras: MutableMap<String, String>): Map<String, Object> {
+    protected fun buildNotificationMap(title: String, summary: String, extras: MutableMap<String, String>): Map<String, Any?>? {
         return mapOf(
                 "title" to title,
                 "summary" to summary,

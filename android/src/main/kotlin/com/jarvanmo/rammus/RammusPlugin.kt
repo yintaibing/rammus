@@ -26,7 +26,7 @@ class RammusPlugin(private val registrar: Registrar, private val methodChannel: 
 
         // 点击后启动APP的那一条消息
         @JvmStatic
-        var launchAppNotification: Map<String, Object>? = null
+        var launchAppNotification: Map<String, Any?>? = null
 
         @JvmStatic
         fun registerWith(registrar: Registrar) {
