@@ -35,10 +35,11 @@ open class PopupPushActivity: AndroidPopupActivity() {
     protected open fun needFinish(): Boolean = true
 
     protected fun buildNotificationMap(title: String, summary: String, extras: MutableMap<String, String>): Map<String, Any?> {
+        val jsonExtras = extrasMapToJsonString(extras)
         return mapOf(
                 "title" to title,
                 "summary" to summary,
-                "extras" to extras
+                "extras" to jsonExtras
         )
     }
 
